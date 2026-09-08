@@ -14,6 +14,29 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
+  // ==========================================
+  // NAMA TAMU DARI URL
+  // Contoh:
+  // ?to=Budi-Santoso
+  // ==========================================
+  const getGuestName = () => {
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get("to");
+
+    if (!guest) {
+      return "Tamu Undangan";
+    }
+
+    return guest
+      .replace(/-/g, " ")
+      .replace(/\+/g, " ")
+      .trim();
+  };
+
+  const [guestNamePersonal, setGuestNamePersonal] = useState(
+    getGuestName()
+  );
+
   // RSVP
   const [guestName, setGuestName] = useState("");
   const [attendance, setAttendance] = useState("");
@@ -65,7 +88,8 @@ function App() {
     if (!audio) return;
 
     if (audio.paused) {
-      audio.play()
+      audio
+        .play()
         .then(() => {
           setIsMusicPlaying(true);
         })
@@ -173,7 +197,7 @@ function App() {
       ========================================== */}
       <audio
         id="wedding-music"
-        src="/music/Muria-Brangkat.mp3"
+        src="/music/lagu-pernikahan.mp3"
         loop
       />
 
@@ -193,6 +217,20 @@ function App() {
               <span>&</span>
               Nama Wanita
             </h1>
+
+            <div className="guest-opening">
+              <p className="guest-label">
+                Kepada Yth.
+              </p>
+
+              <p className="guest-title">
+                Bapak/Ibu/Saudara/i
+              </p>
+
+              <h2 className="guest-name">
+                {guestNamePersonal}
+              </h2>
+            </div>
 
             <p className="date">
               [Tanggal Pernikahan]
@@ -215,9 +253,7 @@ function App() {
       {isOpen && (
         <main className="invitation">
 
-          {/* ==========================================
-              MUSIC BUTTON
-          ========================================== */}
+          {/* MUSIC BUTTON */}
           <button
             className="music-button"
             onClick={toggleMusic}
@@ -255,6 +291,16 @@ function App() {
             <p className="date">
               [Tanggal Pernikahan]
             </p>
+
+            <div className="hero-guest">
+              <p>
+                Kepada Yth.
+              </p>
+
+              <strong>
+                {guestNamePersonal}
+              </strong>
+            </div>
 
           </section>
 
@@ -297,7 +343,6 @@ function App() {
 
             <div className="event-container">
 
-              {/* AKAD */}
               <div className="event-card">
 
                 <h3>
@@ -324,7 +369,6 @@ function App() {
 
               </div>
 
-              {/* RESEPSI */}
               <div className="event-card">
 
                 <h3>
@@ -371,43 +415,23 @@ function App() {
             <div className="countdown-container">
 
               <div>
-                <strong>
-                  {timeLeft.days}
-                </strong>
-
-                <span>
-                  Hari
-                </span>
+                <strong>{timeLeft.days}</strong>
+                <span>Hari</span>
               </div>
 
               <div>
-                <strong>
-                  {timeLeft.hours}
-                </strong>
-
-                <span>
-                  Jam
-                </span>
+                <strong>{timeLeft.hours}</strong>
+                <span>Jam</span>
               </div>
 
               <div>
-                <strong>
-                  {timeLeft.minutes}
-                </strong>
-
-                <span>
-                  Menit
-                </span>
+                <strong>{timeLeft.minutes}</strong>
+                <span>Menit</span>
               </div>
 
               <div>
-                <strong>
-                  {timeLeft.seconds}
-                </strong>
-
-                <span>
-                  Detik
-                </span>
+                <strong>{timeLeft.seconds}</strong>
+                <span>Detik</span>
               </div>
 
             </div>
@@ -432,13 +456,10 @@ function App() {
 
             <div className="story-container">
 
-              {/* PERTEMUAN */}
               <div className="story-item">
 
                 <div className="story-image">
-                  <span>
-                    Foto
-                  </span>
+                  <span>Foto</span>
                 </div>
 
                 <div className="story-content">
@@ -460,13 +481,10 @@ function App() {
 
               </div>
 
-              {/* LAMARAN */}
               <div className="story-item reverse">
 
                 <div className="story-image">
-                  <span>
-                    Foto
-                  </span>
+                  <span>Foto</span>
                 </div>
 
                 <div className="story-content">
@@ -488,13 +506,10 @@ function App() {
 
               </div>
 
-              {/* PERNIKAHAN */}
               <div className="story-item">
 
                 <div className="story-image">
-                  <span>
-                    Foto
-                  </span>
+                  <span>Foto</span>
                 </div>
 
                 <div className="story-content">
@@ -592,7 +607,6 @@ function App() {
               onSubmit={handleSubmit}
             >
 
-              {/* NAMA */}
               <div className="form-group">
 
                 <label>
@@ -610,7 +624,6 @@ function App() {
 
               </div>
 
-              {/* KEHADIRAN */}
               <div className="form-group">
 
                 <label>
@@ -640,7 +653,6 @@ function App() {
 
               </div>
 
-              {/* UCAPAN */}
               <div className="form-group">
 
                 <label>

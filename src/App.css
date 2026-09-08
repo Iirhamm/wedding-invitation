@@ -102,7 +102,14 @@ h1 span {
 }
 
 @media (max-width: 600px) {
-  .opening {
+  .rsvp-form {
+  padding: 25px 20px;
+}
+
+.rsvp-description {
+  font-size: 12px;
+}
+  .opening {    
     padding: 20px;
   }
 
@@ -600,4 +607,122 @@ h1 span {
 .empty-wishes {
   font-size: 13px;
   opacity: 0.6;
+}
+/* =========================
+   MUSIC BUTTON
+========================= */
+.music-button {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 1100;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(63, 58, 52, 0.2);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+
+  color: #3f3a34;
+  font-size: 20px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+  transition: all 0.3s ease;
+}
+
+.music-button:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+  .music-button {
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 18px;
+  }
+}
+/* =========================
+   PERSONAL GUEST
+========================= */
+
+.guest-opening {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.guest-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.guest-title {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.guest-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.hero-guest {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.hero-guest p {
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.hero-guest strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .guest-opening {
+    margin-top: 28px;
+  }
+
+  .guest-label {
+    font-size: 10px;
+  }
+
+  .guest-title {
+    font-size: 10px;
+  }
+
+  .guest-name {
+    font-size: 27px;
+  }
+
+  .hero-guest {
+    margin-top: 28px;
+  }
+
+  .hero-guest strong {
+    font-size: 24px;
+  }
 }
